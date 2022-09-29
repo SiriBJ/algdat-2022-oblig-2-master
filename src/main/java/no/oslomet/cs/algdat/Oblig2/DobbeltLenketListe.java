@@ -33,15 +33,31 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     // instansvariabler
     private Node<T> hode;          // peker til den første i listen
     private Node<T> hale;          // peker til den siste i listen
-    private int antall;            // antall noder i listen
-    private int endringer;         // antall endringer i listen
+    private int antall = 0;            // antall noder i listen
+    private int endringer=0;         // antall endringer i listen
 
     public DobbeltLenketListe() {
         throw new UnsupportedOperationException();
     }
 
     public DobbeltLenketListe(T[] a) {
-        throw new UnsupportedOperationException();
+       if (a==null){
+           throw new NullPointerException("Tabellen a er null!");
+       }
+
+       for (int i = 0;i<a.length;i++){
+
+           Node current = new Node(a[i]);
+           if (i==0){
+               hode = current;
+               current.forrige = null;
+           }else if(i==a.length-1){
+               hale = current;
+               current.neste = null;
+           }
+
+       }
+
     }
 
     public Liste<T> subliste(int fra, int til) {
@@ -50,12 +66,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int antall() {
-        throw new UnsupportedOperationException();
+        return antall;
     }
 
     @Override
     public boolean tom() {
-        throw new UnsupportedOperationException();
+        if(antall == 0){
+         return true;
+        }
+        return false;
     }
 
     @Override
