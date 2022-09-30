@@ -6,6 +6,7 @@ package no.oslomet.cs.algdat.Oblig2;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -33,32 +34,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     // instansvariabler
     private Node<T> hode;          // peker til den første i listen
     private Node<T> hale;          // peker til den siste i listen
-    private int antall = 0;            // antall noder i listen
-    private int endringer=0;         // antall endringer i listen
+    private int antall;            // antall noder i listen
+    private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-        throw new UnsupportedOperationException();
+        antall=0;
     }
 
     public DobbeltLenketListe(T[] a) {
-       if (a==null){
-           throw new NullPointerException("Tabellen a er null!");
+        Objects.requireNonNull(a, "Tabellen a er null");
+        hode = new Node<>(a[0]);
+        hale = new Node(a[a.length-1]);
+        Node prev = hode;
+        for (int i = 1;i<a.length-1;i++){
+           if(a[i]!=null){
+               Node current = new Node(a[i]);
+               current.forrige = prev;
+               prev.neste = current;
+               prev=current;
+               antall++;
+           }
        }
-
-       hode = new Node<>(a[0]);
-       hale = new Node(a[a.length-1]);
-       Node prev = hode;
-       for (int i = 1;i<a.length-1;i++){
-
-           Node current = new Node(a[i]);
-           current.forrige = prev;
-           prev.neste = current;
-           prev=current;
-
-       }
-       hode.forrige=null;
-       hale.neste=null;
-
+        hode.forrige=null;
+        hale.neste=null;
     }
 
     public Liste<T> subliste(int fra, int til) {
