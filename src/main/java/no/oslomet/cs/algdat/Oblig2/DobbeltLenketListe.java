@@ -38,15 +38,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
+
     }
 
     public DobbeltLenketListe(T[] a) {
-        antall =0;
-        endringer = 0;
-        Objects.requireNonNull(a, "Tabellen a er null");
-        if(a.length==0){
-            return;
-        }
+        Objects.requireNonNull(a, "Tabellen a er null");        //Tabellen eksisterer ikke
         hode = new Node<>(a[0]);
         hale = new Node(a[a.length-1]);
         Node prev = hode;
@@ -56,8 +52,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                current.forrige = prev;
                prev.neste = current;
                prev=current;
-               antall++;
-               endringer++;         //Teller antall endringer som skjer i lenken
+               antall++;                // Antall noder i listen
+               endringer++;             // Teller antall endringer som skjer i lenken
            }
        }
         hode.forrige=null;
