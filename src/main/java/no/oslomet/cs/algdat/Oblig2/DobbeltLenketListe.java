@@ -61,7 +61,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                }
                Node current = new Node(a[i]);
                current.forrige = prev;
-               prev.neste = current;
+               if(prev !=null){
+                   prev.neste = current;
+               }
                prev=current;
                antall++;                // Antall noder i listen
                endringer++;             // Teller antall endringer som skjer i lenken
@@ -138,7 +140,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        if (antall == 0) return "[]";
+        if (antall == 0){
+            return "[]";
+        }
 
         StringBuilder s = new StringBuilder();
         s.append('[').append(a[0]);
@@ -151,6 +155,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return s.toString();
     }
 
+
     public String omvendtString(Node<T> a) {
         StringBuilder s = new StringBuilder();
         s.append('[');
@@ -162,6 +167,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         return s.toString();
     }
+
+
+
 
     @Override
     public Iterator<T> iterator() {
