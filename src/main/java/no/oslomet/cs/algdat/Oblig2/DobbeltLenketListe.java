@@ -69,10 +69,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                endringer++;             // Teller antall endringer som skjer i lenken
            }
        }
-        if(a.length==1){
-            antall =1;
-            endringer=1;
-        }
         System.out.println(antall);
     }
 
