@@ -153,16 +153,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return s.toString();
     }
 
-
-    public String omvendtString(Node<T> a) {
+    public String omvendtString() {
         if (antall == 0) {
             return "[]";
         }
         StringBuilder s = new StringBuilder();
-        s.append('[');
+        Node current = hale;
+        s.append('[').append(hale);
 
-        for (int i = hale; i < antall; i--) {
-            s.append(',').append(' ').append(a.get(i));
+        for (int i = antall; i < 0; i--) {
+            s.append(',').append(' ').append(current.verdi);
+            current = current.forrige;
         }
         s.append(']');
 
