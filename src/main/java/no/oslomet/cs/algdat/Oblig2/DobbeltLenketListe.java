@@ -148,10 +148,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         s.append(']');
 
-        return s.toString();    }
+        return s.toString();
+    }
 
-    public String omvendtString() {
-        throw new UnsupportedOperationException();
+    public String omvendtString(Node<T> a) {
+        StringBuilder s = new StringBuilder();
+        s.append('[');
+
+        for (int i = hale; i < antall; i--) {
+            s.append(',').append(' ').append(a.get(i));
+        }
+        s.append(']');
+
+        return s.toString();
     }
 
     @Override
