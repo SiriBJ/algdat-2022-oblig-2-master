@@ -61,7 +61,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                }
                Node current = new Node(a[i]);
                current.forrige = prev;
-               prev.neste = current;
+               if(prev !=null){
+                   prev.neste = current;
+               }
                prev=current;
                antall++;                // Antall noder i listen
                endringer++;             // Teller antall endringer som skjer i lenken
