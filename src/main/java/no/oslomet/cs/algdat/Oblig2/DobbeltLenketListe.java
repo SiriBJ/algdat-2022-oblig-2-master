@@ -53,6 +53,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                prev.neste = current;
                prev=current;
                antall++;
+               endringer++;         //Teller antall endringer som skjer i lenken
            }
        }
         hode.forrige=null;
