@@ -51,15 +51,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Node prev = null;
         for (int i = 0; i < a.length; i++) {
             if (a[i] != null) {
-                if (i == 0) {
-                    hode = new Node(a[i]);
-                    hode.forrige = null;
-                    prev = hode;
-                } else if (i == a.length - 1) {
-                    hale = new Node(a[i]);
-                    hale.neste = null;
-                }
                 Node current = new Node(a[i]);
+                if(hode == null){
+                    hode = current;
+                }
+                hale = current;
                 current.forrige = prev;
                 if (prev != null) {
                     prev.neste = current;
@@ -69,7 +65,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 endringer++;             // Teller antall endringer som skjer i lenken
             }
         }
-        System.out.println(antall);
     }
 
     public Liste<T> subliste(int fra, int til) {
