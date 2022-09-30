@@ -138,7 +138,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        if (antall == 0) return "[]";
+        if (antall == 0){
+            return "[]";
+        }
 
         StringBuilder s = new StringBuilder();
         s.append('[').append(a[0]);
@@ -148,9 +150,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         s.append(']');
 
-        return s.toString();    }
+        return s.toString();
+    }
+
 
     public String omvendtString() {
+
         throw new UnsupportedOperationException();
     }
 
