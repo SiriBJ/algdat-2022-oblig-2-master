@@ -42,33 +42,33 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public DobbeltLenketListe(T[] a) {
-        antall =0;
+        antall = 0;
         endringer = 0;
         Objects.requireNonNull(a, "Tabellen a er null"); //Tabellen eksisterer ikke
-        if(a.length==0) {
+        if (a.length == 0) {
             return;
         }
         Node prev = null;
-        for (int i = 0;i<a.length;i++){
-           if(a[i]!=null){
-               if(i==0){
-                   hode = new Node(a[i]);
-                   hode.forrige=null;
-                   prev = hode;
-               } else if (i==a.length-1) {
-                   hale = new Node(a[i]);
-                   hale.neste=null;
-               }
-               Node current = new Node(a[i]);
-               current.forrige = prev;
-               if(prev !=null){
-                   prev.neste = current;
-               }
-               prev=current;
-               antall++;                // Antall noder i listen
-               endringer++;             // Teller antall endringer som skjer i lenken
-           }
-       }
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != null) {
+                if (i == 0) {
+                    hode = new Node(a[i]);
+                    hode.forrige = null;
+                    prev = hode;
+                } else if (i == a.length - 1) {
+                    hale = new Node(a[i]);
+                    hale.neste = null;
+                }
+                Node current = new Node(a[i]);
+                current.forrige = prev;
+                if (prev != null) {
+                    prev.neste = current;
+                }
+                prev = current;
+                antall++;                // Antall noder i listen
+                endringer++;             // Teller antall endringer som skjer i lenken
+            }
+        }
         System.out.println(antall);
     }
 
@@ -83,8 +83,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean tom() {
-        if(antall == 0){
-         return true;
+        if (antall == 0) {
+            return true;
         }
         return false;
     }
@@ -136,15 +136,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        if (antall == 0){
+        if (antall == 0) {
             return "[]";
         }
 
         StringBuilder s = new StringBuilder();
-        s.append('[').append(a[0]);
+        Node current = hode;
+        s.append('[').append(hode);
 
-        for (int i = 1; i < antall; i++) {
-            s.append(',').append(' ').append(a[i]);
+        for (int i = 1; i < antall - 1; i++) {
+            s.append(',').append(' ').append(current.verdi);
+            current = current.neste;
         }
         s.append(']');
 
@@ -153,7 +155,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
 
     public String omvendtString(Node<T> a) {
-        if(antall == 0){
+        if (antall == 0) {
             return "[]";
         }
         StringBuilder s = new StringBuilder();
@@ -166,8 +168,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         return s.toString();
     }
-
-
 
 
     @Override
