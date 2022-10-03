@@ -85,17 +85,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(antall, fra, til);
 
-        StringBuilder s = new StringBuilder();
-        Node current = hode;
-        s.append('[').append(hode.verdi);
-
-        for(int i = fra; i < til; i++){
-            s.append(',').append(' ').append(current.neste.verdi);
-            current = current.neste;
-        }
-
-        s.append(']');
-        return;
+        Liste<T> instansDDL = new DobbeltLenketListe<>();
+        return instansDDL;
 
     }
 
