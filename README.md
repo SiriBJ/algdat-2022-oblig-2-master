@@ -2,10 +2,10 @@
 
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
-* Siri Esteri Berg-Johnsen, s364735@oslomet.no
-* Andreas Dårstad, S364765, s364765@oslomet.no
-* Ylva Evenrud, S364748, s364748@oslomet.no
-* Miriam Sarpong, S364766, s364766@oslomet.no
+* Siri Esteri Berg-Johnsen, s364735, s364735@oslomet.no
+* Andreas Dårstad, s364765, s364765@oslomet.no
+* Ylva Evenrud, s364748, s364748@oslomet.no
+* Miriam Sarpong, s364766, s364766@oslomet.no
 
 # Arbeidsfordeling
 
