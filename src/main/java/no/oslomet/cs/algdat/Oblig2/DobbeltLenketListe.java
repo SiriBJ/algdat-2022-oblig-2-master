@@ -40,7 +40,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public DobbeltLenketListe() {
         hode = null;
         antall = 0;
-        endringer=0;
+        endringer = 0;
     }
 
     public DobbeltLenketListe(T[] a) {
@@ -72,37 +72,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     private static void fratilKontroll(int antall, int fra, int til) {
-        if (fra < 0){
+        if (fra < 0) {
             throw new IndexOutOfBoundsException("fra verdien: " + fra + " er ikke gyldig!");
         }
-        if (til > antall){
+        if (til > antall) {
             throw new IndexOutOfBoundsException("til verdien: " + til + " er utenfor listen!");
         }
-        if (fra > til){
+        if (fra >= til) {
             throw new IndexOutOfBoundsException("fra verdien: " + fra + " er større enn til verdien: " + til + " = Ugyldig! Try again!");
         }
     }
+
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(antall, fra, til);
 
         Liste<T> instansDDL = new DobbeltLenketListe<>();
-
-        if (fra == til) {
-            return instansDDL;
-        }
-
-        Node current = hode;
-        for (int i = 0; i < fra; i++) {
-            current = current.neste;
-        }
-
-        for (int i = 0; i < til; i++){
-            instansDDL.LeggInn(current.verdi);
-            current = current.neste;
-        }
         return instansDDL;
-    }
 
+    }
 
     @Override
     public int antall() {
@@ -148,7 +135,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean inneholder(T verdi) {
-        if(indeksTil(verdi)==-1){
+        if (indeksTil(verdi) == -1) {
             return false;
         }
         return true;
@@ -156,19 +143,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     // Oppgave 3 a)
     private Node<T> finnNode(int indeks) {
-        if(indeks == 0){
+        if (indeks == 0) {
             return hode;
         }
         if (indeks < (antall / 2)) { //indeksen er midre enn midten, starter fra hodet mot høyre
             Node<T> current = hode;
-            for (int i = 0; i < indeks; i++){
+            for (int i = 0; i < indeks; i++) {
                 current = current.neste;
             }
             return current;
 
         } else { // Letingen skal gå fra halen så til forrige til venstre
             Node<T> current = hale;
-            for (int i = antall-1; i > indeks; i--){
+            for (int i = antall - 1; i > indeks; i--) {
                 current = current.forrige;
             }
             return current;
@@ -185,8 +172,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public int indeksTil(T verdi) {
         Node<T> current = hode;
-        for (int i = 0; i<antall;i++){
-            if(current.verdi.equals(verdi)){
+        for (int i = 0; i < antall; i++) {
+            if (current.verdi.equals(verdi)) {
                 return i;
             }
             current = current.neste;
@@ -209,29 +196,35 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
+        Node<T> current = hode;
+        for (int i = 0; i < antall; i++) {
+            if (current.verdi.equals(verdi)) {
+                antall--;
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        Node<T> fjernes = finnNode(indeks);
+        T verdi = fjernes.verdi;
+        fjernes.forrige.neste = fjernes.neste;
+        fjernes.neste.forrige = fjernes.forrige;
+
+        antall--;
+
+        endringer++;
+
+        return verdi;
     }
 
     @Override
     public void nullstill() {
-        Node current = hode;
-        Node next = hode.neste;
-        for(int i=0;i<antall-1;i++){
-            current.verdi = null;
-            current.neste = null;
-            current.forrige = null;
-            current = next;
-            next = next.neste;
-        }
-        hode=null;
-        hale=null;
-        antall=0;
-        endringer++;
+        throw new UnsupportedOperationException();
     }
 
     @Override
