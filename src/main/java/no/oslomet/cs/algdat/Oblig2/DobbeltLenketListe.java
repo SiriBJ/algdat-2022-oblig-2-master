@@ -175,6 +175,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if(current.verdi.equals(verdi)){
                 return i;
             }
+            current = current.neste;
         }
         return -1;
     }
