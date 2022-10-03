@@ -38,7 +38,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-
+        hode = null;
+        antall = 0;
+        endringer=0;
     }
 
     public DobbeltLenketListe(T[] a) {
@@ -129,7 +131,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             return current;
 
-        } else { // Letingen skal gå fra halen så til forrige til venstre 
+        } else { // Letingen skal gå fra halen så til forrige til venstre
             Node current = hale;
             for (int i = antall; i > indeks; i--){
                 current = current.forrige;
@@ -152,7 +154,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        Node gammel = finnNode(indeks);
+        T gv = gammel.verdi;
+        Objects.requireNonNull(nyverdi);
+        Node ny = new Node(nyverdi, gammel.forrige, gammel.neste);
+        gammel.forrige.neste = ny;
+        gammel.neste.forrige = ny;
+        return gv;
     }
 
     @Override
