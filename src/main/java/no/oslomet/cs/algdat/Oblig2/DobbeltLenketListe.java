@@ -54,6 +54,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 Node current = new Node(a[i]);
                 if(hode == null){
                     hode = current;
+                    hode.forrige=null;
                 }
                 hale = current;
                 current.forrige = prev;
@@ -62,7 +63,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 }
                 prev = current;
                 antall++;                // Antall noder i listen
-                endringer++;             // Teller antall endringer som skjer i lenken
+                endringer++; // Teller antall endringer som skjer i lenken
+                hale.neste = null;
             }
         }
     }
@@ -86,7 +88,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(verdi, "Verdien er null");
+        Node ny = new Node(verdi);
+        if(hode==null){
+            hode=ny;
+            hale=ny;
+            hode.forrige=null;
+            hale.neste=null;
+            antall++;
+            endringer++;
+            return true;
+        }else{
+            Node prev = hale;
+            ny.forrige=prev;
+            prev.neste=ny;
+            ny.neste=null;
+            hale=ny;
+            antall++;
+            endringer++;
+            return true;
+        }
     }
 
     @Override
@@ -137,10 +158,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         StringBuilder s = new StringBuilder();
         Node current = hode;
-        s.append('[').append(hode);
+        s.append('[').append(hode.verdi);
 
-        for (int i = 1; i < antall - 1; i++) {
-            s.append(',').append(' ').append(current.verdi);
+        for (int i = 1; i < antall; i++) {
+            s.append(',').append(' ').append(current.neste.verdi);
             current = current.neste;
         }
         s.append(']');
@@ -154,10 +175,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         StringBuilder s = new StringBuilder();
         Node current = hale;
-        s.append('[').append(hale);
+        s.append('[').append(hale.verdi);
 
-        for (int i = antall; i < 0; i--) {
-            s.append(',').append(' ').append(current.verdi);
+        for (int i = antall; i > 1; i--) {
+            s.append(',').append(' ').append(current.forrige.verdi);
             current = current.forrige;
         }
         s.append(']');
