@@ -52,9 +52,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         for (int i = 0; i < a.length; i++) {
             if (a[i] != null) {
                 Node current = new Node(a[i]);
-                if(hode == null){
+                if (hode == null) {
                     hode = current;
-                    hode.forrige=null;
+                    hode.forrige = null;
                 }
                 hale = current;
                 current.forrige = prev;
@@ -90,20 +90,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public boolean leggInn(T verdi) {
         Objects.requireNonNull(verdi, "Verdien er null");
         Node ny = new Node(verdi);
-        if(hode==null){
-            hode=ny;
-            hale=ny;
-            hode.forrige=null;
-            hale.neste=null;
+        if (hode == null) {
+            hode = ny;
+            hale = ny;
+            hode.forrige = null;
+            hale.neste = null;
             antall++;
             endringer++;
             return true;
-        }else{
+        } else {
             Node prev = hale;
-            ny.forrige=prev;
-            prev.neste=ny;
-            ny.neste=null;
-            hale=ny;
+            ny.forrige = prev;
+            prev.neste = ny;
+            ny.neste = null;
+            hale = ny;
             antall++;
             endringer++;
             return true;
@@ -120,8 +120,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    // Oppgave 3 a)
+    private Node<T> finnNode(int indeks) {
+        if (indeks < (antall / 2)) { //indeksen er midre enn midten, starter fra hodet mot høyre
+            Node current = hode;
+            for (int i = 0; i < indeks; i++){
+                current = current.neste;
+            }
+            return current;
+
+        } else { // Letingen skal gå fra halen så til forje til venstre 
+            Node current = hale;
+            for (int i = antall; i > indeks; i--){
+                current = current.forrige;
+            }
+            return current;
+        }
+
+    }
+
     @Override
     public T hent(int indeks) {
+
+
         throw new UnsupportedOperationException();
     }
 
