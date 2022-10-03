@@ -84,10 +84,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(antall, fra, til);
+/*
+        //leggInn(T DobbeltLenketListe);
 
+        DobbeltLenketListe<T> liste = new DobbeltLenketListe<T>();
+        return liste;
+*/
         Liste<T> instansDDL = new DobbeltLenketListe<>();
         return instansDDL;
-
     }
 
     @Override
