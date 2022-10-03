@@ -172,7 +172,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public int indeksTil(T verdi) {
         Node<T> current = hode;
         for (int i = 0; i<antall;i++){
-            if(current.verdi == verdi){
+            if(current.verdi.equals(verdi)){
                 return i;
             }
         }
