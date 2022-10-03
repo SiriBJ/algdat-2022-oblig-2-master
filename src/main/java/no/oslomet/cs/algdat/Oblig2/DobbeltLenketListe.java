@@ -71,8 +71,32 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
     }
 
+    private static void fratilKontroll(int antall, int fra, int til) {
+        if (fra < 0){
+            throw new IndexOutOfBoundsException("fra verdien: " + fra + " er ikke gyldig!");
+        }
+        if (til > antall){
+            throw new IndexOutOfBoundsException("til verdien: " + til + " er utenfor listen!");
+        }
+        if (fra > til){
+            throw new IndexOutOfBoundsException("fra verdien: " + fra + " er større enn til verdien: " + til + " = Ugyldig! Try again!");
+        }
+    }
     public Liste<T> subliste(int fra, int til) {
-        throw new UnsupportedOperationException();
+        fratilKontroll(antall, fra, til);
+
+        StringBuilder s = new StringBuilder();
+        Node current = hode;
+        s.append('[').append(hode.verdi);
+
+        for(int i = fra; i < til; i++){
+            s.append(',').append(' ').append(current.neste.verdi);
+            current = current.neste;
+        }
+
+        s.append(']');
+        return T;
+
     }
 
     @Override
@@ -157,6 +181,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
+
         indeksKontroll(indeks, false);
         Node<T> gammel = finnNode(indeks);
         Objects.requireNonNull(nyverdi);
