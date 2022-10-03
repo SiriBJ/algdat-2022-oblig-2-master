@@ -125,15 +125,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     // Oppgave 3 a)
     private Node<T> finnNode(int indeks) {
         if (indeks < (antall / 2)) { //indeksen er midre enn midten, starter fra hodet mot høyre
-            Node current = hode;
-            for (int i = 0; i < indeks; i++){
+            if(indeks == 0){
+                return hode;
+            }
+            Node<T> current = hode;
+            for (int i = 1; i < indeks-1; i++){
                 current = current.neste;
             }
             return current;
 
         } else { // Letingen skal gå fra halen så til forrige til venstre
-            Node current = hale;
-            for (int i = antall; i > indeks; i--){
+            Node<T> current = hale;
+            for (int i = antall-1; i > indeks; i--){
                 current = current.forrige;
             }
             return current;
@@ -155,13 +158,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public T oppdater(int indeks, T nyverdi) {
         indeksKontroll(indeks, false);
-        Node gammel = finnNode(indeks);
-        T gv = gammel.verdi;
+        Node<T> gammel = finnNode(indeks);
         Objects.requireNonNull(nyverdi);
-        Node ny = new Node(nyverdi, gammel.forrige, gammel.neste);
-        gammel.forrige.neste = ny;
-        gammel.neste.forrige = ny;
-        return gv;
+        T gammelverdi = gammel.verdi;
+        gammel.verdi = nyverdi;
+        endringer++;
+        return gammelverdi;
     }
 
     @Override
