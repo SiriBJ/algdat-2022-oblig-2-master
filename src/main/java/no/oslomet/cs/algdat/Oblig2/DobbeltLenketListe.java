@@ -84,15 +84,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
     public Liste<T> subliste(int fra, int til) {
         fratilKontroll(antall, fra, til);
-/*
-        //leggInn(T DobbeltLenketListe);
 
-        DobbeltLenketListe<T> liste = new DobbeltLenketListe<T>();
-        return liste;
-*/
         Liste<T> instansDDL = new DobbeltLenketListe<>();
+
+        if (fra == til) {
+            return instansDDL;
+        }
+
+        Node current = hode;
+        for (int i = 0; i < fra; i++) {
+            current = current.neste;
+        }
+
+        for (int i = 0; i < til; i++){
+            instansDDL.LeggInn(current.verdi);
+            current = current.neste;
+        }
         return instansDDL;
     }
+
 
     @Override
     public int antall() {
