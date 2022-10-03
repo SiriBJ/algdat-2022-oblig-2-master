@@ -78,7 +78,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (til > antall){
             throw new IndexOutOfBoundsException("til verdien: " + til + " er utenfor listen!");
         }
-        if (fra >= til){
+        if (fra > til){
             throw new IndexOutOfBoundsException("fra verdien: " + fra + " er større enn til verdien: " + til + " = Ugyldig! Try again!");
         }
     }
@@ -205,7 +205,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        Node current = hode;
+        Node next = hode.neste;
+        for(int i=0;i<antall-1;i++){
+            current.verdi = null;
+            current.neste = null;
+            current.forrige = null;
+            current = next;
+            next = next.neste;
+        }
+        hode=null;
+        hale=null;
+        antall=0;
+        endringer++;
     }
 
     @Override
