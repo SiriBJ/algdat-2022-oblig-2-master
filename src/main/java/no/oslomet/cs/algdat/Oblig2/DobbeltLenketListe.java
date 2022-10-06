@@ -130,7 +130,31 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-        throw new UnsupportedOperationException();
+
+        if (verdi == null) {
+            throw new NullPointerException("Kan ikke putte inn Null verdi"); // Kastes unntak hvis indeksen er null
+        }
+        indeksKontroll(indeks, false);
+
+        Node<T> ny = new Node(verdi);                       // Lager ny node for tallet som skal inn
+
+        if (indeks <= antall) {                             // Legger innn verdi på hale plassen
+            ny.forrige = hale.forrige;
+            hale = ny;
+        } else if (hode == null) {                          // Hvis tabellen ikke har noen verdier i fra før av blir den nye hode og hale
+            hode = ny;
+            hode.neste = null;
+            hale = ny;
+            hale.forrige = null;
+        } else {                                            // Legger verdien inn på indeks sin plass
+            Node<T> current = finnNode(indeks);
+            ny.neste = current.neste;
+            current.forrige = ny.forrige;
+            //ny.forrige = current;
+        }
+        antall++;
+        endringer++;
+
     }
 
     @Override
