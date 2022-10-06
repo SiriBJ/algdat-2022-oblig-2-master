@@ -73,23 +73,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     private static void fratilKontroll(int antall, int fra, int til) {
         if (fra < 0) {
-            throw new IndexOutOfBoundsException("fra verdien: " + fra + " er ikke gyldig!");
+            throw new IndexOutOfBoundsException("fra verdien: " + fra + " er negativ!");
         }
         if (til > antall) {
             throw new IndexOutOfBoundsException("til verdien: " + til + " er utenfor listen!");
         }
-        if (fra >= til) {
-            throw new IndexOutOfBoundsException("fra verdien: " + fra + " er større enn til verdien: " + til + " = Ugyldig! Try again!");
+        if (fra > til) {
+            throw new IllegalArgumentException("fra verdien: " + fra + " er større enn til verdien: " + til + " = Ugyldig! Try again!");
         }
     }
 
     public Liste<T> subliste(int fra, int til) {
-        fratilKontroll(antall, fra, til);
+        fratilKontroll(antall, fra, til); //sjekker at intervallet er gyldig
 
-        Liste<T> instansDDL = new DobbeltLenketListe<>();
+        Node<T> current = finnNode(fra); //initialisere hva som er current verdien
+        Liste<T> instansDDL = new DobbeltLenketListe<>(); //returnere en liste, instans av klassen DobbeltLenketListe
+
+        for (int i = fra; i < til; i++){ //Starter fra første noden i listen
+            instansDDL.leggInn(current.verdi);
+            current = current.neste;
+        }
         return instansDDL;
-
     }
+
 
     @Override
     public int antall() {
