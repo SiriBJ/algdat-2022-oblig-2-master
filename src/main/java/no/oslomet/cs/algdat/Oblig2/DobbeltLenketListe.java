@@ -241,13 +241,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public T fjern(int indeks) {
         indeksKontroll(indeks, false);
 
-        Node<T> fjernes = finnNode(indeks);
-        T verdi;
+        Node<T> temp = hode;
+        T fjernes;
 
         if (indeks == 0) {                        //Indeks er på første plass
-            verdi = fjernes.verdi;
-            if (fjernes.neste != null) {          //Sjekker om neste verdi ikke er null
-                hode = fjernes.neste;             //Setter hode til verdien etter den som skal fjernes
+            fjernes = temp.verdi;
+            if (temp.neste != null) {          //Sjekker om neste verdi ikke er null
+                hode = temp.neste;             //Setter hode til verdien etter den som skal fjernes
                 hode.forrige = null;              //Setter hode sin forrige til null
             } else {                              //Arrayet har kun en verdi, den som blir fjernet
                 hode = null;
@@ -255,19 +255,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
 
         } else if (indeks == antall - 1) {                //Indeks er på siste plass
+            temp = hale;
+            fjernes = hale.verdi;
 
         } else {                                         //Indeks er et sted imellom
 
         }
 
 
-        fjernes.forrige.neste = fjernes.neste;
-        fjernes.neste.forrige = fjernes.forrige;
+        temp.forrige.neste = temp.neste;
+        temp.neste.forrige = temp.forrige;
 
         antall--;
         endringer++;
 
-        return verdi;
+        return fjernes;
     }
 
     @Override
