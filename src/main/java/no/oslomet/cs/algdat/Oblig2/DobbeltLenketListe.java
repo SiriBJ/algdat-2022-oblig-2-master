@@ -241,51 +241,54 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public T fjern(int indeks) {
         indeksKontroll(indeks, false);
 
-        Node<T> temp = hode;
+        Node<T> posisjon = hode;                            //Setter posisjon til hode sin plass
         T fjernes;
 
-        if (indeks == 0) {                        //Indeks er på første plass
-            fjernes = temp.verdi;
-            if (temp.neste != null) {          //Sjekker om neste verdi ikke er null
-                hode = temp.neste;             //Setter hode til verdien etter den som skal fjernes
-                hode.forrige = null;              //Setter hode sin forrige til null
-            } else {                              //Arrayet har kun en verdi, den som blir fjernet
+        if (indeks == 0) {                                  //Indeks er på første plass
+            fjernes = posisjon.verdi;                       //Setter fjernes til posisjon sin verdi(hode)
+            if (posisjon.neste != null) {                   //Sjekker om neste node ikke er null
+                hode = hode.neste;                          //Setter hode til noden etter den som skal fjernes
+                hode.forrige = null;                        //Setter hode sin forrige peker til null
+            } else {                                        //Arrayet har kun en verdi, den som blir fjernet
                 hode = null;
                 hale = null;
             }
 
-        } else if (indeks == antall - 1) {                //Indeks er på siste plass
-            temp = hale;
-            fjernes = hale.verdi;
+        } else if (indeks == antall - 1) {                 //Indeks er på siste plass
+            fjernes = hale.verdi;                          //Setter fjernes til hale sin node
+            hale = hale.forrige;                           //Setter hale sin node til nest siste node
+            hale.neste = null;                             //Setter neste peker til hale til null, slik at verdien blir slettet
 
-        } else {                                         //Indeks er et sted imellom
+        } else {                                           //Indeks er et sted imellom første plass og siste plass
+            for (int i = 0; i < indeks; i++) {             //Looper gjennom hver indeks i listen til i er like stor som indeks
+                posisjon = posisjon.neste;
+            }
+            fjernes = posisjon.verdi;                      //Setter fjernes til indeks verdien
 
+            posisjon.forrige.neste = posisjon.neste;      //Noden før posisjon sin nestepeker peker på noden etter posisjon
+            posisjon.neste.forrige = posisjon.forrige;    //Noden etter posisjon sin forrigepeker peker på noden før posisjon
         }
-
-
-        temp.forrige.neste = temp.neste;
-        temp.neste.forrige = temp.forrige;
 
         antall--;
         endringer++;
 
-        return temp.verdi;
+        return fjernes;
     }
 
     @Override
     public void nullstill() {
         Node current = hode;
         Node next = hode.neste;
-        for(int i=0;i<antall-1;i++){
+        for (int i = 0; i < antall - 1; i++) {
             current.verdi = null;
             current.neste = null;
             current.forrige = null;
             current = next;
             next = next.neste;
         }
-        hode=null;
-        hale=null;
-        antall=0;
+        hode = null;
+        hale = null;
+        antall = 0;
         endringer++;
     }
 
