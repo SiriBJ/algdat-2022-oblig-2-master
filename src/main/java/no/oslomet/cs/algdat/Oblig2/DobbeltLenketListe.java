@@ -245,6 +245,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         T verdi;
 
         if (indeks == 0) {                        //Indeks er på første plass
+            verdi = fjernes.verdi;
+            if (fjernes.neste != null) {          //Sjekker om neste verdi ikke er null
+                hode = fjernes.neste;             //Setter hode til verdien etter den som skal fjernes
+                hode.forrige = null;              //Setter hode sin forrige til null
+            } else {                              //Arrayet har kun en verdi, den som blir fjernet
+                hode = null;
+                hale = null;
+            }
 
         } else if (indeks == antall - 1) {                //Indeks er på siste plass
 
