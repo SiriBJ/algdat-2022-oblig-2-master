@@ -36,7 +36,13 @@ I oppgave 5 så gikk vi frem ved å
 I oppgave 6 så gikk vi frem ved å
 
 I oppgave 7 så gikk vi frem for metode 1, ved å bruke to variabler, en for current og en for next, så en fremdeles 
-kunne iterere gjennom lista, selvom man satte alle verdier i current til null.
+kunne iterere gjennom lista, selvom man satte alle verdier i current til null. Satte så antall=0, hode=null og
+hale=null. Plusset også på endringer
+Dette brukte den 11ms,på en stasjonær pc, på i følge terminalen.
+For metode 2, brukte vi en for løkke som itererer fra 0 til, men ikke med antall, som kaller på fjern(0).Satte så antall=0, hode=null og
+hale=null. Plusset også på endringer
+Dette brukte maskinen 11ms på, på en stasjonær pc, i følge terminalen.
+Siden metode 2 gir mye kortere kode og gjenbruker kode, valgte vi å bruke denne.
 
 I oppgave 8 så gikk vi frem ved å
 
