@@ -236,21 +236,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public boolean fjern(T verdi) {
         if (verdi == null) return false;                       //Listen er tom
 
-        Node<T> posisjon = hode;
-
+        Node<T> posisjon = hode;                               //Setter posisjon til hode sin plass
 
         //Indeks er på første plass
-        if (verdi.equals(posisjon.verdi)) {
-
+        if (verdi.equals(posisjon.verdi)) {                    //Sjekker om verdi og posisjon(hode) har samme verdi
+            hode = hode.neste;                                 //Setter hode sin neste peker til noden etter verdien som skal fjernes
+            hode.forrige = null;                               //Setter hode sin forrige peker til null, slik at verdien vår blir slettet
+            return true;
         }
-
 
         //Indeks er på siste plass
-        posisjon = hale;
-        if (verdi.equals(posisjon.verdi)) {
-
+        posisjon = hale;                                       //Setter posisjon til hale sin plass
+        if (verdi.equals(posisjon.verdi)) {                    //Sjekker om verdi og posisjon(hale) har samme verdi
+            hale.neste = null;                                 //Setter hale sin neste peker til null, slik at verdien blir slettet
+            hale = posisjon.forrige;                           //Setter hale sin forrige peker til verdien før verdien som skal fjernes
+            return true;
         }
-
 
         //Indeks er et sted imellom første plass og siste plass
         for (int i = 0; i < antall; i++) {
@@ -284,7 +285,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             //Indeks er på siste plass
         } else if (indeks == antall - 1) {
             fjernes = hale.verdi;                          //Setter fjernes til hale sin node
-            hale = hale.forrige;                           //Setter hale sin node til nest siste node
+            hale = hale.forrige;                           //Setter hale sin peker til nest siste node
             hale.neste = null;                             //Setter neste peker til hale til null, slik at verdien blir slettet
 
             //Indeks er et sted imellom første plass og siste plass
@@ -320,7 +321,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         antall = 0;
         endringer++;*/
 
-        for(int i=0;i< antall;i++){
+        for (int i = 0; i < antall; i++) {
             fjern(0);
         }
         hode = null;
@@ -389,7 +390,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         private DobbeltLenketListeIterator(int indeks) {
             Node current = hode;
-            for (int i = 0;i< indeks;i++){
+            for (int i = 0; i < indeks; i++) {
                 current = current.neste;
             }
             denne = current;
@@ -404,14 +405,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next() {
-            if(iteratorendringer != endringer){
+            if (iteratorendringer != endringer) {
                 throw new ConcurrentModificationException();
             }
-            if(!hasNext()){
+            if (!hasNext()) {
                 throw new NoSuchElementException("Noden har ingen verdi, så den har ingen neste");
             }
 
-            fjernOK=true;
+            fjernOK = true;
             Node<T> retur = denne;
             denne = denne.neste;
             return retur.verdi;
