@@ -155,12 +155,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             ny.forrige = hale;
             ny.neste = null;
             hale = ny;
-        }else if(indeks == 0){
+        } else if (indeks == 0) {
             //Gjør hode til ny sin neste
             //gjør hode sin forrige til ny
             //endrer hode pekeren
             //ny sin neste blir nulll
-        }else{
+        } else {
             //løkke som går fra null til indeks-1
             //trenger en peker til current og next node
             //gjør current til ny sin forrige, og ny til currents neste
@@ -234,15 +234,33 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        Node<T> current = hode;
+        if (verdi == null) return false;                       //Listen er tom
+
+        Node<T> posisjon = hode;
+
+
+        //Indeks er på første plass
+        if (verdi.equals(posisjon.verdi)) {
+
+        }
+
+
+        //Indeks er på siste plass
+        posisjon = hale;
+        if (verdi.equals(posisjon.verdi)) {
+
+        }
+
+
+        //Indeks er et sted imellom første plass og siste plass
         for (int i = 0; i < antall; i++) {
-            if (current.verdi.equals(verdi)) {
-                antall--;
+            if (posisjon.verdi.equals(verdi)) {
+                return true;
             } else {
                 return false;
             }
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -252,7 +270,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Node<T> posisjon = hode;                            //Setter posisjon til hode sin plass
         T fjernes;
 
-        if (indeks == 0) {                                  //Indeks er på første plass
+        //Indeks er på første plass
+        if (indeks == 0) {
             fjernes = posisjon.verdi;                       //Setter fjernes til posisjon sin verdi(hode)
             if (posisjon.neste != null) {                   //Sjekker om neste node ikke er null
                 hode = hode.neste;                          //Setter hode til noden etter den som skal fjernes
@@ -262,12 +281,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 hale = null;
             }
 
-        } else if (indeks == antall - 1) {                 //Indeks er på siste plass
+            //Indeks er på siste plass
+        } else if (indeks == antall - 1) {
             fjernes = hale.verdi;                          //Setter fjernes til hale sin node
             hale = hale.forrige;                           //Setter hale sin node til nest siste node
             hale.neste = null;                             //Setter neste peker til hale til null, slik at verdien blir slettet
 
-        } else {                                           //Indeks er et sted imellom første plass og siste plass
+            //Indeks er et sted imellom første plass og siste plass
+        } else {
             for (int i = 0; i < indeks; i++) {             //Looper gjennom hver indeks i listen til i er like stor som indeks
                 posisjon = posisjon.neste;
             }
