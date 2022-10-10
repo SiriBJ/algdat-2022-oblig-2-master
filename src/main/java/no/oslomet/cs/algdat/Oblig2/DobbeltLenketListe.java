@@ -89,7 +89,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Node<T> current = finnNode(fra); //initialisere hva som er current verdien
         Liste<T> instansDDL = new DobbeltLenketListe<>(); //returnere en liste, instans av klassen DobbeltLenketListe
 
-        for (int i = fra; i < til; i++){ //Starter fra første noden i listen
+        for (int i = fra; i < til; i++) { //Starter fra første noden i listen
             instansDDL.leggInn(current.verdi);
             current = current.neste;
         }
@@ -240,13 +240,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public T fjern(int indeks) {
         indeksKontroll(indeks, false);
+
         Node<T> fjernes = finnNode(indeks);
-        T verdi = fjernes.verdi;
+        T verdi;
+
+        if (indeks == 0) {                        //Indeks er på første plass
+
+        } else if (indeks == antall - 1) {                //Indeks er på siste plass
+
+        } else {                                         //Indeks er et sted imellom
+
+        }
+
+
         fjernes.forrige.neste = fjernes.neste;
         fjernes.neste.forrige = fjernes.forrige;
 
         antall--;
-
         endringer++;
 
         return verdi;
@@ -341,5 +351,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
 } // class DobbeltLenketListe
+
+
 
 
