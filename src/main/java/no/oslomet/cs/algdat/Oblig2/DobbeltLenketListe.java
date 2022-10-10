@@ -142,21 +142,28 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         indeksKontroll(indeks, false);
 
-        Node<T> ny = new Node(verdi);                       // Lager ny node for tallet som skal inn
+        Node<T> ny = new Node(verdi); // Lager ny node for tallet som skal inn
 
-        if (indeks <= antall) {                             // Legger innn verdi på hale plassen
-            ny.forrige = hale.forrige;
-            hale = ny;
-        } else if (hode == null) {                          // Hvis tabellen ikke har noen verdier i fra før av blir den nye hode og hale
+        if (hode == null) {                          // Hvis tabellen ikke har noen verdier i fra før av blir den nye hode og hale
             hode = ny;
             hode.neste = null;
             hale = ny;
             hale.forrige = null;
-        } else {                                            // Legger verdien inn på indeks sin plass
-            Node<T> current = finnNode(indeks);
-            ny.neste = current.neste;
-            current.forrige = ny.forrige;
-            //ny.forrige = current;
+        }
+        if (indeks == antall) {                             // Legger innn verdi på hale plassen
+            ny.forrige = hale;
+            ny.neste = null;
+            hale = ny;
+        }else if(indeks == 0){
+            //Gjør hode til ny sin neste
+            //gjør hode sin forrige til ny
+            //endrer hode pekeren
+            //ny sin neste blir nulll
+        }else{
+            //løkke som går fra null til indeks-1
+            //trenger en peker til current og next node
+            //gjør current til ny sin forrige, og ny til currents neste
+            //gjør det samme men motsatt for next
         }
         antall++;
         endringer++;
