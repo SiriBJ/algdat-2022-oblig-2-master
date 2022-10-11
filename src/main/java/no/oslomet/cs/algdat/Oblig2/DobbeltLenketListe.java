@@ -137,11 +137,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-
         if (verdi == null) {
-            throw new NullPointerException("Kan ikke putte inn Null verdi"); // Kastes unntak hvis indeksen er null
+            throw new NullPointerException("Kan ikke putte inn en Null verdi"); // Kastes unntak hvis indeksen er null
         }
-        indeksKontroll(indeks, false);
+        //indeksKontroll(indeks, false);
+        if (0 > indeks || indeks > antall) {
+            throw new IndexOutOfBoundsException("Ikke en gyldig indeks");
+        }
 
         Node<T> ny = new Node(verdi); // Lager ny node for tallet som skal inn
 
@@ -155,20 +157,31 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             ny.forrige = hale;
             ny.neste = null;
             hale = ny;
-        } else if (indeks == 0) {
-            //Gjør hode til ny sin neste
-            //gjør hode sin forrige til ny
-            //endrer hode pekeren
-            //ny sin neste blir nulll
+        } else if (indeks == 0) {                           // Legger inn verdi på hode plassen
+            hode.forrige = ny;          // Gjør hode sin forrige til ny
+            ny.neste = hode;            // Gjør hode til ny sin neste
+            hode = ny;                  // Endrer hode pekeren
+            ny.forrige = null;          // Ny sin neste blir nulll
         } else {
             //løkke som går fra null til indeks-1
             //trenger en peker til current og next node
             //gjør current til ny sin forrige, og ny til currents neste
             //gjør det samme men motsatt for next
+
+            Node<T> current = hode;
+            Node<T> next = hode.neste;
+            for (int i = 1; i < indeks - 1; i++) {
+                current = next;
+                next = next.neste;
+            }
+            ny.forrige = current;
+            ny.neste = next;
+            next.forrige = ny;
+            current.neste = ny;
+
         }
         antall++;
         endringer++;
-
     }
 
     @Override
@@ -412,21 +425,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public void remove() {
 
-            if(antall == 1){
+            if (antall == 1) {
                 hode = null;
                 hale = null;
-            }else if(denne == null){
+            } else if (denne == null) {
                 hale = hale.forrige;
                 hale.neste = null;
-            }else if(denne.forrige == hode){
+            } else if (denne.forrige == hode) {
                 hode = denne;
                 hode.forrige = null;
-            }else{
+            } else {
                 Node fjernes = denne.forrige;
                 denne.forrige = fjernes.forrige;
                 fjernes.forrige.neste = denne;
             }
-            antall --;
+            antall--;
             endringer++;
             iteratorendringer++;
         }
