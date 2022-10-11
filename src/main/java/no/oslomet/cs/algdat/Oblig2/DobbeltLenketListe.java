@@ -425,6 +425,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public void remove() {
 
+            if(antall==0 || denne==hode){
+                throw new IllegalStateException();
+            }
+            if(iteratorendringer != endringer){
+                throw new ConcurrentModificationException("Listen har blitt endret");
+            }
             if (antall == 1) {
                 hode = null;
                 hale = null;
