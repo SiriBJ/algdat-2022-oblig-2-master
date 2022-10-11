@@ -271,7 +271,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         //Indeks er et sted imellom første plass og siste plass
-        for (int i = 0; i < antall; i++) {
+        posisjon = hode;
+        for (int i = 0; i < antall - 1; i++) {
             posisjon = posisjon.neste;
             if (posisjon.verdi.equals(verdi)) {
                 posisjon.forrige.neste = posisjon.neste;
@@ -279,8 +280,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 antall--;
                 endringer++;
                 return true;
-            } else {
-                return false;
             }
         }
         return false;
