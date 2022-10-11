@@ -253,8 +253,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //Indeks er på første plass
         if (verdi.equals(posisjon.verdi)) {                    //Sjekker om verdi og posisjon(hode) har samme verdi
-            hode = hode.neste;                                 //Setter hode sin neste peker til noden etter verdien som skal fjernes
-            hode.forrige = null; //Setter hode sin forrige peker til null, slik at verdien vår blir slettet
+            hode.forrige = null;                               //Setter hode sin neste peker til noden etter verdien som skal fjernes
+            hode = hode.neste;                                 //Setter hode sin forrige peker til null, slik at verdien vår blir slettet
             antall--;
             endringer++;
             return true;
@@ -264,7 +264,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         posisjon = hale;                                       //Setter posisjon til hale sin plass
         if (verdi.equals(posisjon.verdi)) {                    //Sjekker om verdi og posisjon(hale) har samme verdi
             hale.neste = null;                                 //Setter hale sin neste peker til null, slik at verdien blir slettet
-            hale = posisjon.forrige; //Setter hale sin forrige peker til verdien før verdien som skal fjernes
+            hale = posisjon.forrige;                           //Setter hale sin forrige peker til verdien før verdien som skal fjernes
             antall--;
             endringer++;
             return true;
@@ -272,11 +272,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //Indeks er et sted imellom første plass og siste plass
         posisjon = hode;
-        for (int i = 0; i < antall - 1; i++) {
+        for (int i = 0; i < antall - 1; i++) {                        //Looper gjennom listen til indeks verdi i listen er lik verdien vi skal slette
             posisjon = posisjon.neste;
-            if (posisjon.verdi.equals(verdi)) {
-                posisjon.forrige.neste = posisjon.neste;
-                posisjon.neste.forrige = posisjon.forrige;
+            if (posisjon.verdi.equals(verdi)) {                       //Verdien er lik og for løkka stopper
+                posisjon.forrige.neste = posisjon.neste;              //Noden før posisjon sin nestepeker peker på noden etter posisjon
+                posisjon.neste.forrige = posisjon.forrige;            //Noden etter posisjon sin forrigepeker peker på noden før posisjon
                 antall--;
                 endringer++;
                 return true;
