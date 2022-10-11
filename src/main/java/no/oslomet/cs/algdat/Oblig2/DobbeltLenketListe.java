@@ -406,7 +406,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public T next() {
             if (iteratorendringer != endringer) {
-                throw new ConcurrentModificationException();
+                throw new ConcurrentModificationException("Listen har blitt endret");
             }
             if (!hasNext()) {
                 throw new NoSuchElementException("Noden har ingen verdi, så den har ingen neste");
