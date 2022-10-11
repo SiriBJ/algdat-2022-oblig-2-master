@@ -272,7 +272,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //Indeks er et sted imellom første plass og siste plass
         for (int i = 0; i < antall; i++) {
+            posisjon = posisjon.neste;
             if (posisjon.verdi.equals(verdi)) {
+                posisjon.forrige.neste = posisjon.neste;
+                posisjon.neste.forrige = posisjon.forrige;
+                antall--;
+                endringer++;
                 return true;
             } else {
                 return false;
@@ -425,10 +430,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public void remove() {
 
-            if(antall==0 || denne==hode){
+            if (antall == 0 || denne == hode) {
                 throw new IllegalStateException();
             }
-            if(iteratorendringer != endringer){
+            if (iteratorendringer != endringer) {
                 throw new ConcurrentModificationException("Listen har blitt endret");
             }
             if (antall == 1) {
