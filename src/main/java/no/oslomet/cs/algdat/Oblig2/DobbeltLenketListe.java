@@ -241,7 +241,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //Indeks er på første plass
         if (verdi.equals(posisjon.verdi)) {                    //Sjekker om verdi og posisjon(hode) har samme verdi
             hode = hode.neste;                                 //Setter hode sin neste peker til noden etter verdien som skal fjernes
-            hode.forrige = null;                               //Setter hode sin forrige peker til null, slik at verdien vår blir slettet
+            hode.forrige = null; //Setter hode sin forrige peker til null, slik at verdien vår blir slettet
+            antall--;
+            endringer++;
             return true;
         }
 
@@ -249,7 +251,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         posisjon = hale;                                       //Setter posisjon til hale sin plass
         if (verdi.equals(posisjon.verdi)) {                    //Sjekker om verdi og posisjon(hale) har samme verdi
             hale.neste = null;                                 //Setter hale sin neste peker til null, slik at verdien blir slettet
-            hale = posisjon.forrige;                           //Setter hale sin forrige peker til verdien før verdien som skal fjernes
+            hale = posisjon.forrige; //Setter hale sin forrige peker til verdien før verdien som skal fjernes
+            antall--;
+            endringer++;
             return true;
         }
 
@@ -307,19 +311,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        /*Node current = hode;
-        Node next = hode.neste;
-        for (int i = 0; i < antall - 1; i++) {
-            current.verdi = null;
-            current.neste = null;
-            current.forrige = null;
-            current = next;
-            next = next.neste;
-        }
-        hode = null;
-        hale = null;
-        antall = 0;
-        endringer++;*/
 
         for (int i = 0; i < antall; i++) {
             fjern(0);
@@ -420,8 +411,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException();
 
+            if(antall == 1){
+                hode = null;
+                hale = null;
+            }else if(denne == null){
+                hale = hale.forrige;
+                hale.neste = null;
+            }else if(denne.forrige == hode){
+                hode = denne;
+                hode.forrige = null;
+            }else{
+                Node fjernes = denne.forrige;
+                denne.forrige = fjernes.forrige;
+                fjernes.forrige.neste = denne;
+            }
+            antall --;
+            endringer++;
+            iteratorendringer++;
         }
 
     } // class DobbeltLenketListeIterator
