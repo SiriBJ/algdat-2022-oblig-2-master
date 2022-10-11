@@ -33,7 +33,15 @@ For inneholder() kaller den på indeksTil() og returnerer false hvis den får ti
 
 I oppgave 5 så gikk vi frem ved å
 
-I oppgave 6 så gikk vi frem ved å
+I oppgave 6 så har jeg skrevet en felles beskrivelse for begge fjern metodene siden de er bygd opp relativt likt, slik at det ikke skal bli en alt for lang beskrivelse. 
+Vi frem ved å dele opp i 3 forskjellige sjekker i begge fjern metodene, en for tilfellet der verdien som skal fjernes er på indeks 0, siste index, eller i mellom disse to.
+I fjern(int indeks) metoden starter vi med å kalle på indekskontroll mens i fjern(T verdi) sjekker vi om verdi==null, begge disse tester arrayets gyldighet. 
+Deretter lagde vi to hjelpevariabler, posisjon for å holde styr på indeksen og fjernes som skulle lagre verdien som ble fjernet og returnere den. 
+Fjernet brukes kun i fjern(int indeks) ettersom at i fjern(T verdi) skal det kun returne true eller false. 
+Arrayet sin index til verdien blir sjekket om den er først, sist eller i mellom og går inn i if setningen som passer indeksen i det gitte tilfellet. 
+Dersom den er først eller sist vil hode/hale pekere bli satt til null eller verdien før/etter verdien som skal fjernes, deretter oppdateres antall og endringer og evt returnerer true.
+Dersom verdien/indeksen er i mellom vil den gå inn i en for løkke som looper gjennom arrayet til den finner verdien og fremover/bakover pekere vil peke på verdien før/etter verdien vi fjerner, slik at den blir slettet.
+Deretter vil antall/endringer bli oppdatert slik som i de andre if/else setningene.
 
 I oppgave 7 så gikk vi frem for metode 1, ved å bruke to variabler, en for current og en for next, så en fremdeles 
 kunne iterere gjennom lista, selvom man satte alle verdier i current til null. Satte så antall=0, hode=null og
