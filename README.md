@@ -10,10 +10,10 @@ Oppgaven er levert av følgende studenter:
 # Arbeidsfordeling
 
 I oppgaven har vi hatt følgende arbeidsfordeling:
-* Siri har hatt hovedansvar for oppgave 1, 4, 7
+* Siri har hatt hovedansvar for oppgave 1, 4, 7, 9
 * Andreas har hatt hovedansvar for oppgave 6
 * Ylva har hatt hovedansvar for oppgave 5 
-* Miriam har hatt hovedansvar for oppgave 5
+* Miriam har hatt hovedansvar for oppgave 5, 8
 * Vi har i felleskap løst oppgave 2 og 3
 * 3a var i hovedsak løst av Siri og Andreas
 * 3b var i hovedsak løst av Ylva og Miriam
