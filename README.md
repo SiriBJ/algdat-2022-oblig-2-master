@@ -24,7 +24,10 @@ I oppgave 1 så gikk vi frem ved å først sjekke om selve tabbelen a er null, o
 
 I oppgave 2 så brukte vi en ... til å ...
 
-I oppgave 3a så gikk vi frem ved å
+I oppgave 3a så gikk vi frem ved å sjekke om indeks er null, om det stemmer så returnerer vi hode. 
+Så sjekker vi om indeksen ligger i venstre halvdel av listen. Hvis det stemmer setter vi current til hode og deretter looper gjennom listen ved hjelp av en for løkke. 
+Current oppdateres til neste verdi for hver gang den looper og for løkka stopper når i er like stor som indeks. Deretter blir current returnert som da har verdien som ligger på den gitte indeks plassen.
+Dersom indeksen ligger i høyre halvdel går vi inn i else delen og gjør det samme som i tilfellet der indeks er i første halvdel, men for løkka starter på hale istedenfor hode.
 
 I oppgave 3b så gikk vi frem ved å
 
