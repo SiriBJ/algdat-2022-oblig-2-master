@@ -154,6 +154,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hale.forrige = null;
         }
         if (indeks == antall) {                             // Legger innn verdi på hale plassen
+            hale.neste = ny;
             ny.forrige = hale;
             ny.neste = null;
             hale = ny;
@@ -170,7 +171,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
             Node<T> current = hode;
             Node<T> next = hode.neste;
-            for (int i = 1; i < indeks - 1; i++) {
+            for (int i = 0; i < indeks - 1; i++) {
                 current = next;
                 next = next.neste;
             }
