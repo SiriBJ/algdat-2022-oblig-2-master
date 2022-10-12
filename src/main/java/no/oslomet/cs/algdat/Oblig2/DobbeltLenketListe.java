@@ -73,13 +73,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     private static void fratilKontroll(int antall, int fra, int til) {
-        if (fra < 0) {
+        if (fra < 0) {                                                                              //Sjekker om fra verdi er gyldig
             throw new IndexOutOfBoundsException("fra verdien: " + fra + " er negativ!");
         }
-        if (til > antall) {
+        if (til > antall) {                                                                         //Sjekker om til verdi er gyldig
             throw new IndexOutOfBoundsException("til verdien: " + til + " er utenfor listen!");
         }
-        if (fra > til) {
+        if (fra > til) {                                                                            //Sjekker om fra ikke er større enn til
             throw new IllegalArgumentException("fra verdien: " + fra + " er større enn til verdien: " + til + " = Ugyldig! Try again!");
         }
     }
@@ -250,8 +250,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //Indeks er på første plass
         if (verdi.equals(posisjon.verdi)) {                    //Sjekker om verdi og posisjon(hode) har samme verdi
-            hode.forrige = null;                               //Setter hode sin neste peker til noden etter verdien som skal fjernes
-            hode = hode.neste;                                 //Setter hode sin forrige peker til null, slik at verdien vår blir slettet
+            hode.forrige = null;                               //Setter hode sin forrige peker til null, slik at verdien vår blir slettet
+            hode = hode.neste;                                 //Setter hode til noden etter verdien som skal fjernes
             antall--;
             endringer++;
             return true;
@@ -261,7 +261,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         posisjon = hale;                                       //Setter posisjon til hale sin plass
         if (verdi.equals(posisjon.verdi)) {                    //Sjekker om verdi og posisjon(hale) har samme verdi
             hale.neste = null;                                 //Setter hale sin neste peker til null, slik at verdien blir slettet
-            hale = posisjon.forrige;                           //Setter hale sin forrige peker til verdien før verdien som skal fjernes
+            hale = posisjon.forrige;                           //Setter hale til verdien før verdien som skal fjernes
             antall--;
             endringer++;
             return true;
@@ -284,15 +284,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T fjern(int indeks) {
-        indeksKontroll(indeks, false);
+        indeksKontroll(indeks, false);              //Sjekker om indeks er gyldig
 
         Node<T> posisjon = hode;                            //Setter posisjon til hode sin plass
-        T fjernes;
+        T fjernes;                                          //Verdi som skal fjernes
 
         //Indeks er på første plass
         if (indeks == 0) {
             fjernes = posisjon.verdi;                       //Setter fjernes til posisjon sin verdi(hode)
-            if (posisjon.neste != null) {                   //Sjekker om neste node ikke er null
+            if (posisjon.neste != null) {                   //Sjekker om det er flere verdier i listen
                 hode = hode.neste;                          //Setter hode til noden etter den som skal fjernes
                 hode.forrige = null;                        //Setter hode sin forrige peker til null
             } else {                                        //Arrayet har kun en verdi, den som blir fjernet
@@ -303,7 +303,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             //Indeks er på siste plass
         } else if (indeks == antall - 1) {
             fjernes = hale.verdi;                          //Setter fjernes til hale sin node
-            hale = hale.forrige;                           //Setter hale sin peker til nest siste node
+            hale = hale.forrige;                           //Setter hale til nest siste node
             hale.neste = null;                             //Setter neste peker til hale til null, slik at verdien blir slettet
 
             //Indeks er et sted imellom første plass og siste plass
@@ -337,24 +337,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        if (antall == 0) {
+        if (antall == 0) {                                              //Sjekker om den er tom
             return "[]";
         }
 
-        StringBuilder s = new StringBuilder();
-        Node current = hode;
-        s.append('[').append(hode.verdi);
+        StringBuilder s = new StringBuilder();                          //Oppretter string builder
+        Node current = hode;                                            //Setter current til hode
+        s.append('[').append(hode.verdi);                               //Legger til klammeparantes og hode sin verdi
 
-        for (int i = 1; i < antall; i++) {
+        for (int i = 1; i < antall; i++) {                              //Looper gjennom lista med for løkke og legger til , mellomrom og verdi til listen er tom
             s.append(',').append(' ').append(current.neste.verdi);
             current = current.neste;
         }
-        s.append(']');
+        s.append(']');                                                  //Lukker stringen med klammeparantes
 
-        return s.toString();
+        return s.toString();                                            //Stringen returneres
     }
 
-    public String omvendtString() {
+    public String omvendtString() {                                     //Samme fremgangsmåte som toString men starter bakfra
         if (antall == 0) {
             return "[]";
         }
@@ -453,33 +453,29 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     } // class DobbeltLenketListeIterator
 
-
-    public static <T> void bytt(Liste<T> liste, int i, int j)
-    {
+    //Kopiert bytt fra KOMPENDIET (Programkode 1.1.8 d)
+    public static <T> void bytt(Liste<T> liste, int i, int j) {
         T temp = liste.hent(i);
         liste.oppdater(i, liste.hent(j));
-        liste.oppdater(j, temp);    //Kopiert bytt fra kompendiet (Programkode 1.1.8 d)
+        liste.oppdater(j, temp);
     }
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
 
-        if(liste.antall()==0 || liste.antall()==1){
+        if (liste.antall() == 0 || liste.antall() == 1) {
             return;
         }
-        int i,j;
+        int i, j;
 
 
-        for (i = 0; i < liste.antall(); i++){
-            for (j = 0; j < liste.antall(); j++){
-                if (c.compare(liste.hent(i), liste.hent(j)) < 0){
+        for (i = 0; i < liste.antall(); i++) {
+            for (j = 0; j < liste.antall(); j++) {
+                if (c.compare(liste.hent(i), liste.hent(j)) < 0) {
                     bytt(liste, j, i);
                 }
             }
         }
     }
-
-
-
 
 
 } // class DobbeltLenketListe
