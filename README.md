@@ -22,7 +22,8 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 I oppgave 1 så gikk vi frem ved å først sjekke om selve tabbelen a er null, og da kaste en Exception. Etter dette sjekker vi om a[i] er null, siden en slik verdi ikke skal bli en node. Bare den første verdien vil bli hode, siden hode fremdeles er null. Alle nodene vil være hale på et tidspunkt, men den siste vil få nabo lik null, da denne initieringen skjer utenfor for-løkken. 
 
-I oppgave 2 så brukte vi en ... til å ...
+I oppgave 2 vi startet med å sjekke om listen er tom, og returnerer "[]" om den er det. Ellers ved hjelp av StingBuilder lager vi en tekststreng som starter med å legge til hode verdien til listen. Etter dette looper vi igjennom listen fra hode til halen ved hjelp av neste pekeren til "current"/noden vi er på. Etter halen blir lagt til, blir listen lukket, og tekststrengen som er bygget blir returnert. 
+På omvendtString gikk vi fram på samme måte, men vi looper og legger til fra halen, og mot hodet. Returnerer på samme måte
 
 I oppgave 3a så gikk vi frem ved å sjekke om indeks er null, om det stemmer så returnerer vi hode.
 Så sjekker vi om indeksen ligger i venstre halvdel av listen. Hvis det stemmer setter vi current til hode og deretter looper gjennom listen ved hjelp av en for løkke.
