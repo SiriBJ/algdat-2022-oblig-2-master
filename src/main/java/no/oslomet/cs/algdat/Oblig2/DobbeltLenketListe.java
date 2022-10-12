@@ -140,20 +140,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (verdi == null) {
             throw new NullPointerException("Kan ikke putte inn en Null verdi"); // Kastes unntak hvis indeksen er null
         }
-        //indeksKontroll(indeks, false);
         if (0 > indeks || indeks > antall) {
             throw new IndexOutOfBoundsException("Ikke en gyldig indeks");
         }
+        Node<T> ny = new Node(verdi);           // Lager ny node for tallet som skal inn
 
-        Node<T> ny = new Node(verdi); // Lager ny node for tallet som skal inn
-
-        if (hode == null) {                          // Hvis tabellen ikke har noen verdier i fra før av blir den nye hode og hale
+        if (hode == null) {                     // Hvis tabellen ikke har noen verdier i fra før av blir den nye hode og hale og den pekere blir null
             hode = ny;
             hode.neste = null;
             hale = ny;
             hale.forrige = null;
         }
-        if (indeks == antall) {                             // Legger innn verdi på hale plassen
+
+        if (indeks == antall) {                 // Legger inn verdi på hale plassen
             hale.neste = ny;
             ny.forrige = hale;
             ny.neste = null;
@@ -164,18 +163,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hode = ny;                  // Endrer hode pekeren
             ny.forrige = null;          // Ny sin neste blir nulll
         } else {
-            //løkke som går fra null til indeks-1
-            //trenger en peker til current og next node
-            //gjør current til ny sin forrige, og ny til currents neste
-            //gjør det samme men motsatt for next
-
-            Node<T> current = hode;
-            Node<T> next = hode.neste;
-            for (int i = 0; i < indeks - 1; i++) {
-                current = next;
+            Node<T> current = hode;                 // Lager en peker til den vi "er på"
+            Node<T> next = hode.neste;              // Lager en peker til den vi "er på" sin neste
+            for (int i = 0; i < indeks - 1; i++) {  // Finner noden til plassen vi skal sette inn den nye noden på
+                current = next;                     //Går igjennom nodene til den finner den riktig
                 next = next.neste;
             }
-            ny.forrige = current;
+            ny.forrige = current;                   // Setter riktige forrige og neste pekere
             ny.neste = next;
             next.forrige = ny;
             current.neste = ny;
