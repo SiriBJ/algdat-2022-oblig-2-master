@@ -31,7 +31,8 @@ I oppgave 3b så gikk vi frem ved å lage en sjekk om intervallet [fra:til> er l
 I oppgave 4 så gikk vi frem ved å iterere gjennom listen fra hode-noden. Koden sjekker for hver current-node om den har verdi lik ønsket verdi, og hvis ikke itererer den til neste node ved hjelp av neste-pekeren. Hvis verdien er lik, returneres i med en gang. Hvis verdien ikke stemmer med noen av nodenes verdier, returneres -1.
 For inneholder() kaller den på indeksTil() og returnerer false hvis den får tilbake -1 og ellers returnerer den true
 
-I oppgave 5 så gikk vi frem ved å
+I oppgave 5 så gikk det frem ved å først sjekke om verdien og indeksen man får inn er gyldig. Er de gyldige blir det laget en node med riktig verdi og indeks. Etter dette sjekkes indeks mot listen, og sjekker om listen har noen verdier i seg for å sjekke om den er tom. Er den tom setter den hode og hale til denne nye verdien og neste/forrje pekere mot null. 
+Så sjekkes det om indeksen skal settes som hale, hode eller i midten av to tall. Dette gjøres i if, else if og else etter hvor den ska plasseres. Det blir også satt neste og forrje pekere etter riktig ifth hvor den nye plasseres. 
 
 I oppgave 6 så har jeg skrevet en felles beskrivelse for begge fjern metodene siden de er bygd opp relativt likt, slik at det ikke skal bli en alt for lang beskrivelse. 
 Vi frem ved å dele opp i 3 forskjellige sjekker i begge fjern metodene, en for tilfellet der verdien som skal fjernes er på indeks 0, siste index, eller i mellom disse to.
