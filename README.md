@@ -14,7 +14,7 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 * Andreas har hatt hovedansvar for oppgave 6
 * Ylva har hatt hovedansvar for oppgave 5 
 * Miriam har hatt hovedansvar for oppgave 8
-* Vi har i felleskap løst oppgave 2 og 3
+* Vi har i felleskap løst oppgave 2, 3 og 10
 * 3a var i hovedsak løst av Siri og Andreas
 * 3b var i hovedsak løst av Ylva og Miriam
 
