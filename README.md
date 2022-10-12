@@ -39,13 +39,13 @@ I oppgave 5 så gikk det frem ved å først sjekke om verdien og indeksen man f�
 Så sjekkes det om indeksen skal settes som hale, hode eller i midten av to tall. Dette gjøres i if, else if og else etter hvor den ska plasseres. Det blir også satt neste og forrje pekere etter riktig ifth hvor den nye plasseres. 
 
 I oppgave 6 så har jeg skrevet en felles beskrivelse for begge fjern metodene siden de er bygd opp relativt likt, slik at det ikke skal bli en alt for lang beskrivelse. 
-Vi frem ved å dele opp i 3 forskjellige sjekker i begge fjern metodene, en for tilfellet der verdien som skal fjernes er på indeks 0, siste index, eller i mellom disse to.
+Vi gikk frem ved å dele opp i 3 forskjellige sjekker i begge fjern metodene, en for tilfellet der verdien som skal fjernes er på indeks 0(hode), siste index(hale), eller i mellom disse to.
 I fjern(int indeks) metoden starter vi med å kalle på indekskontroll mens i fjern(T verdi) sjekker vi om verdi==null, begge disse tester arrayets gyldighet. 
 Deretter lagde vi to hjelpevariabler, posisjon for å holde styr på indeksen og fjernes som skulle lagre verdien som ble fjernet og returnere den. 
-Fjernet brukes kun i fjern(int indeks) ettersom at i fjern(T verdi) skal det kun returne true eller false. 
-Arrayet sin index til verdien blir sjekket om den er først, sist eller i mellom og går inn i if setningen som passer indeksen i det gitte tilfellet. 
+Fjernet brukes kun i fjern(int indeks) ettersom at i fjern(T verdi) skal det kun reture true eller false. 
+Index til verdien blir sjekket om den er først, sist eller i mellom og går inn i if setningen som passer i det gitte tilfellet.
 Dersom den er først eller sist vil hode/hale pekere bli satt til null eller verdien før/etter verdien som skal fjernes, deretter oppdateres antall og endringer og evt returnerer true.
-Dersom verdien/indeksen er i mellom vil den gå inn i en for løkke som looper gjennom arrayet til den finner verdien og fremover/bakover pekere vil peke på verdien før/etter verdien vi fjerner, slik at den blir slettet.
+Dersom verdien/indeksen er i mellom vil den gå inn i en for løkke som looper gjennom lista til den finner verdien og fremover/bakover pekere vil peke på verdien før/etter verdien vi fjerner, slik at den blir slettet.
 Deretter vil antall/endringer bli oppdatert slik som i de andre if/else setningene.
 
 I oppgave 7 så gikk vi frem for metode 1, ved å bruke to variabler, en for current og en for next, så en fremdeles 
