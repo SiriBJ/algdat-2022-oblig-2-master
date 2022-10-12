@@ -57,7 +57,12 @@ hale=null. Plusset også på endringer
 Dette brukte maskinen 20-25ms på i følge terminalen.
 +Siden metode 2 gjenbruker mye kode, ønsket vi å velge denne. Det er også fint at det er mindre ny kode som må skrives.
 
-I oppgave 8 så gikk vi frem ved å
+I oppgave 8 så gikk vi frem ved å kode alle de metodene i oppgaven. I metoden T next() der vi sjekket om 
+iteratorendringer er lik endringer. Hvis det ikke er det kaster vi en feilmelding og hvis det er ikke flere igjen
+i listen (metoden hasNext()) kaster vi også en feilmelding. I metoden Iterator<T> iterator(), 
+returnerte vi en instans av iteratorklassen. Mens i konstruktør metoden
+(private  DobbeltLenketListeIterator(int  indeks)) - >
+bruker vi en for-loop for å iterere over listen for å da sette pekeren til den noden som hører til oppgitt indeks
 
 I oppgave 9 så gikk vi frem ved å lage kode for alle de forskjellige tilfellene. Begynte med dette fordi jeg var usikker
 på hvordan feilmeldingene skulle håndteres. Etter at tilfellene var kodet, la vi inn feil-håndteringene.
