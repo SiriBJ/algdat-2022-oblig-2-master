@@ -466,21 +466,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if(liste.antall()==0 || liste.antall()==1){
             return;
         }
-        int i,j,mix;
+        int i,j;
 
-        /*for(i=0; i< liste.antall()-1;i++){
-
-            mix=i;
-
-            for (j=i+1;j<liste.antall();j++){
-                if(c.compare(liste.hent(j),liste.hent(mix))<0){
-                    mix=j;
-                }
-                if(mix != i){
-                    bytt(liste, mix, i);
-                }
-            }
-        }*/
 
         for (i = 0; i < liste.antall(); i++){
             for (j = 0; j < liste.antall(); j++){
