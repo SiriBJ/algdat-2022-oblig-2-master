@@ -13,7 +13,7 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 * Siri har hatt hovedansvar for oppgave 1, 4, 7, 9
 * Andreas har hatt hovedansvar for oppgave 6
 * Ylva har hatt hovedansvar for oppgave 5 
-* Miriam har hatt hovedansvar for oppgave 5, 8
+* Miriam har hatt hovedansvar for oppgave 8
 * Vi har i felleskap løst oppgave 2 og 3
 * 3a var i hovedsak løst av Siri og Andreas
 * 3b var i hovedsak løst av Ylva og Miriam
@@ -24,14 +24,18 @@ I oppgave 1 så gikk vi frem ved å først sjekke om selve tabbelen a er null, o
 
 I oppgave 2 så brukte vi en ... til å ...
 
-I oppgave 3a så gikk vi frem ved å
+I oppgave 3a så gikk vi frem ved å sjekke om indeks er null, om det stemmer så returnerer vi hode.
+Så sjekker vi om indeksen ligger i venstre halvdel av listen. Hvis det stemmer setter vi current til hode og deretter looper gjennom listen ved hjelp av en for løkke.
+Current oppdateres til neste verdi for hver gang den looper og for løkka stopper når i er like stor som indeks. Deretter blir current returnert som da har verdien som ligger på den gitte indeks plassen.
+Dersom indeksen ligger i høyre halvdel går vi inn i else delen og gjør det samme som i tilfellet der indeks er i første halvdel, men for løkka starter på hale istedenfor hode.
 
-I oppgave 3b så gikk vi frem ved å
+I oppgave 3b så gikk vi frem ved å lage en sjekk om intervallet [fra:til> er lovlig eller gyldig. Deretter gikk jeg ut ifra å initialisere hva som er current verdien, som skal da starte fra, fra-verdien. Slik som oppgaven ber om, skulle vi retunere en liste, instans av klassen DobbeltLenketListe. 
 
 I oppgave 4 så gikk vi frem ved å iterere gjennom listen fra hode-noden. Koden sjekker for hver current-node om den har verdi lik ønsket verdi, og hvis ikke itererer den til neste node ved hjelp av neste-pekeren. Hvis verdien er lik, returneres i med en gang. Hvis verdien ikke stemmer med noen av nodenes verdier, returneres -1.
 For inneholder() kaller den på indeksTil() og returnerer false hvis den får tilbake -1 og ellers returnerer den true
 
-I oppgave 5 så gikk vi frem ved å
+I oppgave 5 så gikk det frem ved å først sjekke om verdien og indeksen man får inn er gyldig. Er de gyldige blir det laget en node med riktig verdi og indeks. Etter dette sjekkes indeks mot listen, og sjekker om listen har noen verdier i seg for å sjekke om den er tom. Er den tom setter den hode og hale til denne nye verdien og neste/forrje pekere mot null. 
+Så sjekkes det om indeksen skal settes som hale, hode eller i midten av to tall. Dette gjøres i if, else if og else etter hvor den ska plasseres. Det blir også satt neste og forrje pekere etter riktig ifth hvor den nye plasseres. 
 
 I oppgave 6 så har jeg skrevet en felles beskrivelse for begge fjern metodene siden de er bygd opp relativt likt, slik at det ikke skal bli en alt for lang beskrivelse. 
 Vi frem ved å dele opp i 3 forskjellige sjekker i begge fjern metodene, en for tilfellet der verdien som skal fjernes er på indeks 0, siste index, eller i mellom disse to.
@@ -50,10 +54,12 @@ Dette brukte maskinen 20-25ms på i følge terminalen.
 For metode 2, brukte vi en for løkke som itererer fra 0 til, men ikke med antall, som kaller på fjern(0).Satte så antall=0, hode=null og
 hale=null. Plusset også på endringer
 Dette brukte maskinen 20-25ms på i følge terminalen.
-Siden metode 2 gir mye kortere kode og gjenbruker kode, valgte vi å bruke denne.
++Siden metode 2 gjenbruker mye kode, ønsket vi å velge denne. Det er også fint at det er mindre ny kode som må skrives.
 
 I oppgave 8 så gikk vi frem ved å
 
-I oppgave 9 så gikk vi frem ved å
+I oppgave 9 så gikk vi frem ved å lage kode for alle de forskjellige tilfellene. Begynte med dette fordi jeg var usikker
+på hvordan feilmeldingene skulle håndteres. Etter at tilfellene var kodet, la vi inn feil-håndteringene.
+
 
 I oppgave 10 så gikk vi frem ved å
