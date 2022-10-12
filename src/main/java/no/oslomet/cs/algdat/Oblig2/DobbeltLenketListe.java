@@ -179,6 +179,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         endringer++;
     }
 
+
     @Override
     public boolean inneholder(T verdi) {
         if (indeksTil(verdi) == -1) {
@@ -206,6 +207,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             return current;
         }
+
 
     }
 
@@ -452,8 +454,36 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        throw new UnsupportedOperationException();
+
+        for (int i = 0; i < liste.antall(); i++){ //looper gjennom
+            for (int j = 0; j < liste.antall(); j++){
+                if ((c.compare(liste.hent(i), liste.hent(j))) < 0){ // Hent element på plass indeks
+
+
+                    //oppdatere listen
+                }
+            }
+        }
+
+
+        //if (liste.compareTo(c)
+
+        /*for (int i = 1; i < liste.antall(); i++) {
+            T temp = liste.hent(i);
+
+            int j = i - 1;
+
+
+            for (; j >= 0 && c.compare(temp, liste.hent(j)) < 0; j--) {
+                liste.oppdater(j + 1, liste.hent(j));
+            }
+
+        }*/
     }
+
+
+
+
 
 } // class DobbeltLenketListe
 
