@@ -51,10 +51,12 @@ Dette brukte maskinen 20-25ms på i følge terminalen.
 For metode 2, brukte vi en for løkke som itererer fra 0 til, men ikke med antall, som kaller på fjern(0).Satte så antall=0, hode=null og
 hale=null. Plusset også på endringer
 Dette brukte maskinen 20-25ms på i følge terminalen.
-Siden metode 2 gir mye kortere kode og gjenbruker kode, valgte vi å bruke denne.
++Siden metode 2 gjenbruker mye kode, ønsket vi å velge denne. Det er også fint at det er mindre ny kode som må skrives.
 
 I oppgave 8 så gikk vi frem ved å
 
-I oppgave 9 så gikk vi frem ved å
+I oppgave 9 så gikk vi frem ved å lage kode for alle de forskjellige tilfellene. Begynte med dette fordi jeg var usikker
+på hvordan feilmeldingene skulle håndteres. Etter at tilfellene var kodet, la vi inn feil-håndteringene.
+
 
 I oppgave 10 så gikk vi frem ved å
