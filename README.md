@@ -13,7 +13,7 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 * Siri har hatt hovedansvar for oppgave 1, 4, 7, 9
 * Andreas har hatt hovedansvar for oppgave 6
 * Ylva har hatt hovedansvar for oppgave 5 
-* Miriam har hatt hovedansvar for oppgave 5, 8
+* Miriam har hatt hovedansvar for oppgave 8
 * Vi har i felleskap løst oppgave 2 og 3
 * 3a var i hovedsak løst av Siri og Andreas
 * 3b var i hovedsak løst av Ylva og Miriam
@@ -24,9 +24,9 @@ I oppgave 1 så gikk vi frem ved å først sjekke om selve tabbelen a er null, o
 
 I oppgave 2 så brukte vi en ... til å ...
 
-I oppgave 3a så gikk vi frem ved å
+I oppgave 3a så gikk vi frem ved å lage en sjekk, 
 
-I oppgave 3b så gikk vi frem ved å
+I oppgave 3b så gikk vi frem ved å lage en sjekk om intervallet [fra:til> er lovlig eller gyldig. Deretter gikk jeg ut ifra å initialisere hva som er current verdien, som skal da starte fra, fra-verdien. Slik som oppgaven ber om, skulle vi retunere en liste, instans av klassen DobbeltLenketListe. 
 
 I oppgave 4 så gikk vi frem ved å iterere gjennom listen fra hode-noden. Koden sjekker for hver current-node om den har verdi lik ønsket verdi, og hvis ikke itererer den til neste node ved hjelp av neste-pekeren. Hvis verdien er lik, returneres i med en gang. Hvis verdien ikke stemmer med noen av nodenes verdier, returneres -1.
 For inneholder() kaller den på indeksTil() og returnerer false hvis den får tilbake -1 og ellers returnerer den true
