@@ -468,7 +468,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         int i,j,mix;
 
-        for(i=0; i< liste.antall()-1;i++){
+        /*for(i=0; i< liste.antall()-1;i++){
 
             mix=i;
 
@@ -478,6 +478,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 }
                 if(mix != i){
                     bytt(liste, mix, i);
+                }
+            }
+        }*/
+
+        for (i = 0; i < liste.antall(); i++){
+            for (j = 0; j < liste.antall(); j++){
+                if (c.compare(liste.hent(i), liste.hent(j)) < 0){
+                    bytt(liste, j, i);
                 }
             }
         }
