@@ -68,4 +68,6 @@ I oppgave 9 så gikk vi frem ved å lage kode for alle de forskjellige tilfellen
 på hvordan feilmeldingene skulle håndteres. Etter at tilfellene var kodet, la vi inn feil-håndteringene.
 
 
-I oppgave 10 så gikk vi frem ved å
+I oppgave 10 så gikk vi frem ved å først utifra programkode 1.3.8 c) (innsetningssortering) og programkode 1.1.8 d) (bytt()metoden) i kompendiet. 
+Vi valgte å sammenlikne objektet med seg selv, fordi vi møtte på problemer når vi ikke gjorde det. Når liste.hent(i) var "mindre"/"dårligere" 
+enn liste.hent(j), ved hjelp av c.compare(), skal disse bytte plass, som blir gjort ved hjelp av programkode 1.1.8 d fra kompendiet.
