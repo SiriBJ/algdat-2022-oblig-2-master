@@ -1317,6 +1317,7 @@ class Oblig2Test {
 
         if (!intliste.toString().equals(
                 "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]")) {
+            System.out.println(intliste.toString());
             System.out.println("Oppgave 10f: Metoden sorterer feil!");
             antallFeil++;
         }

@@ -453,7 +453,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     } // class DobbeltLenketListeIterator
 
+
+    public static <T> void bytt(Liste<T> liste, int i, int j)
+    {
+        T temp = liste.hent(i);
+        liste.oppdater(i, liste.hent(j));
+        liste.oppdater(j, temp);    //Kopiert bytt fra kompendiet (Programkode 1.1.8 d)
+    }
+
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
+<<<<<<< Updated upstream
 
         for (int i = 0; i < liste.antall(); i++){ //looper gjennom
             for (int j = 0; j < liste.antall(); j++){
@@ -479,6 +488,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
 
         }*/
+=======
+        if(liste.antall()==0 || liste.antall()==1){
+            return;
+        }
+        int i,j,mix;
+
+        for(i=0; i< liste.antall()-1;i++){
+
+            mix=i;
+
+            for (j=i+1;j<liste.antall();j++){
+                if(c.compare(liste.hent(j),liste.hent(mix))<0){
+                    mix=j;
+                }
+                if(mix != i){
+                    bytt(liste, mix, i);
+                }
+            }
+        }
+>>>>>>> Stashed changes
     }
 
 
